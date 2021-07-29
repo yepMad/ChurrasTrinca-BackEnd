@@ -9,6 +9,9 @@
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
     "allowJs": true,
+    "paths": {
+      "@shared/*": ["shared/*"]
+    },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
