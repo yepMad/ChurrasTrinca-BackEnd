@@ -4,6 +4,7 @@
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./src",
+    "noEmit": true,
     "resolveJsonModule": true,
     "strict": true,
     "strictPropertyInitialization": false,
