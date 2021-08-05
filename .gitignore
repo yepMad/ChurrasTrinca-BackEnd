@@ -5,4 +5,5 @@ yarn.lock
 yarn-error.log
 
 # Environment variables
+ormconfig.json
 .env

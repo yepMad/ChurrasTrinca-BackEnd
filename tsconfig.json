@@ -10,7 +10,8 @@
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
     "paths": {
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@modules/*": ["modules/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
