@@ -7,9 +7,6 @@ import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-
 interface Request {
   name: string;
   email: string;

@@ -11,7 +11,8 @@
     "baseUrl": "./src",
     "paths": {
       "@shared/*": ["shared/*"],
-      "@modules/*": ["modules/*"]
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
