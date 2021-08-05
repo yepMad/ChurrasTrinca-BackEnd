@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 
 import CreatePartyService from '@modules/parties/services/CreatePartyService';
 
-export default class UsersController {
+export default class PartiesController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, date, description, observation } = request.body;
 
