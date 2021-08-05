@@ -7,6 +7,9 @@ import 'express-async-errors';
 
 import ErrorMiddleware from '@shared/middlewares/ErrorMiddleware';
 
+import '@shared/infra/typeorm';
+import '@shared/container';
+
 import routes from './routes';
 
 const app = express();
