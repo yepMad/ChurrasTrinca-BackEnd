@@ -19,6 +19,7 @@ interface PartyInfo {
   date_timestamp: number;
   count_users: number;
   total_value: number;
+  owner_id: string;
 }
 
 interface PartyUserInfos
@@ -97,6 +98,7 @@ class GetPartyService {
         count_users: partyUsers.length,
         date_timestamp: party.date.getTime(),
         total_value,
+        owner_id: party.owner_id,
       },
       party_users,
       is_owner: party.owner_id === user_id,
