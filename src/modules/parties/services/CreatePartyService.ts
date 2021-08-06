@@ -1,8 +1,9 @@
-import { injectable, inject } from 'tsyringe';
+import { injectable, inject, container } from 'tsyringe';
 import { isAfter, parseISO } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 
+import CreatePartyUserService from '@modules/parties/services/CreatePartyUserService';
 import Party from '@modules/parties/infra/typeorm/entities/Party';
 
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
@@ -27,8 +28,8 @@ class CreatePartyService {
   public async execute(data: Request): Promise<Party> {
     const { name, date, description, observation, owner_id } = data;
 
-    const isUserExist = await this.usersRepository.read({ id: owner_id });
-    if (!isUserExist) {
+    const user = await this.usersRepository.read({ id: owner_id });
+    if (!user) {
       throw new AppError(`Sorry, your user doesn't exist.`, 400);
     }
 
@@ -46,6 +47,15 @@ class CreatePartyService {
       description,
       observation,
       owner_id,
+    });
+
+    const createPartyUser = container.resolve(CreatePartyUserService);
+    await createPartyUser.execute({
+      party_id: party.id,
+      user_id: user.id,
+      invite_user_email: user.email,
+      general_value: 0,
+      drinks_value: 0,
     });
 
     return party;
