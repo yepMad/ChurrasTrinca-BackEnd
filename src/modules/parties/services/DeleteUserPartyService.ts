@@ -35,15 +35,13 @@ class DeleteUserPartyService {
 
     const partyUserToDel = await this.partiesUsersRepository.read({
       where: { id },
+      relations: ['party'],
     });
     if (!partyUserToDel) {
       throw new AppError(`This party user doesn't exist.`, 404);
     }
 
-    const party = await this.partiesRepository.read({ id });
-    if (!party) {
-      throw new AppError(`This party doesn't exist.`, 400);
-    }
+    const { party } = partyUserToDel;
 
     const requesterIsPartyOwner = party.owner_id === user_id;
     const requesterTryingToDeleteYourself = partyUserToDel.user_id === user_id;
