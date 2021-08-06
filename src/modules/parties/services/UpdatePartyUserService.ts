@@ -52,10 +52,20 @@ class UpdatePartyUserService {
 
     const partyUser = await this.partiesUsersRepository.read({
       where: { id },
-      relations: ['user'],
+      relations: ['user', 'party'],
     });
     if (!partyUser) {
       throw new AppError(`This party doesn't exist.`, 400);
+    }
+
+    const { party } = partyUser;
+    const requesterIsPartyOwner = party.owner_id === user_id;
+
+    if (!requesterIsPartyOwner) {
+      throw new AppError(
+        `Apenas o dono do churras pode editar os usuários.`,
+        403,
+      );
     }
 
     partyUser.itsPaid = itsPaid !== undefined ? itsPaid : partyUser.itsPaid;
