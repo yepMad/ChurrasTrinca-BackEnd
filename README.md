@@ -4,15 +4,25 @@ Olá, caro ~~trincker, trincar, trinquer~~!
 
 **Aqui você pode encontrar:**
  - Como inicializar o projeto;
+   - Yarn;
 	 - Docker;
 	 - Migrations;
 	 - Variáveis ambiente;
  - Como executar o projeto;
 
+**Node:** v14.17.1
+**Yarn:** v1.22.10
+
 ## Inicializar o projeto
+
+### Variáveis ambiente
+Vamos instalar nossas dependências, dentro da pasta do projeto, execute o comando:
+
+    yarn
 
 ### Docker
 Este projeto foi totalmente baseado em Docker para comunicações externas. Com o docker-compose.yaml a inicialização é simples. Basta ter o Docker CLI instalado e executar o comando abaixo dentro da pasta do projeto.
+
 
     docker compose up
 
