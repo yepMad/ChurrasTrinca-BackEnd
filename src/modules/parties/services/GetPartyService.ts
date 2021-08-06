@@ -17,6 +17,8 @@ interface PartyInfo {
   id: string;
   title: string;
   date_timestamp: number;
+  description: string;
+  observation?: string;
   count_users: number;
   total_value: number;
   owner_id: string;
@@ -97,6 +99,8 @@ class GetPartyService {
     return {
       party_infos: {
         id: party.id,
+        description: party.description,
+        observation: party.observation,
         title: party.name,
         count_users: partyUsers.length,
         date_timestamp: party.date.getTime(),

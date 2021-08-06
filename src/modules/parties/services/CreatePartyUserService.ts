@@ -1,7 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
-import PartyUser from '@modules/parties/infra/typeorm/entities/PartyUser';
 
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IPartiesRepository from '@modules/parties/repositories/IPartiesRepository';
@@ -15,6 +14,15 @@ interface Request {
   drinks_value: number;
 }
 
+interface Response {
+  id: string;
+  user_id: string;
+  name: string;
+  general_value: number;
+  drinks_value: number;
+  itsPaid: boolean;
+}
+
 @injectable()
 class CreatePartyUserService {
   constructor(
@@ -26,7 +34,7 @@ class CreatePartyUserService {
     @inject('UsersRepository') private usersRepository: IUsersRepository,
   ) {}
 
-  public async execute(data: Request): Promise<PartyUser> {
+  public async execute(data: Request): Promise<Response> {
     const {
       user_id,
       invite_user_email,
@@ -73,7 +81,14 @@ class CreatePartyUserService {
       itsPaid: false,
     });
 
-    return partyUser;
+    return {
+      id: partyUser.id,
+      name: invitedUser.name,
+      general_value,
+      drinks_value,
+      itsPaid: false,
+      user_id: invitedUser.id,
+    };
   }
 }
 
