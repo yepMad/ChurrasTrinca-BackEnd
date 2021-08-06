@@ -15,7 +15,7 @@ Olá, caro ~~trincker, trincar, trinquer~~!
 
 ## Inicializar o projeto
 
-### Variáveis ambiente
+### Yarn
 Vamos instalar nossas dependências, dentro da pasta do projeto, execute o comando:
 
     yarn
