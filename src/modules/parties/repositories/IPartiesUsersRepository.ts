@@ -8,4 +8,5 @@ export default interface IPartiesUsersRepository {
   read(data: FindOneOptions<PartyUser>): Promise<PartyUser | undefined>;
   readMany(data: FindManyOptions<PartyUser>): Promise<PartyUser[] | undefined>;
   update(data: PartyUser): Promise<PartyUser>;
+  delete(id: string): Promise<void>;
 }

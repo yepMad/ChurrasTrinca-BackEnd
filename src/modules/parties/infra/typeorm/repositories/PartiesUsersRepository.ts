@@ -46,6 +46,10 @@ class PartiesRepository implements IPartiesUsersRepository {
 
     return response;
   }
+
+  public async delete(id: string): Promise<void> {
+    await this.ormRepository.delete(id);
+  }
 }
 
 export default PartiesRepository;
