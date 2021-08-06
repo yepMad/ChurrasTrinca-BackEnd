@@ -5,7 +5,6 @@ import AppError from '@shared/errors/AppError';
 import User from '@modules/users/infra/typeorm/entities/User';
 
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 
 interface Request {
   name: string;
@@ -17,9 +16,6 @@ interface Request {
 class CreateUserService {
   constructor(
     @inject('UsersRepository') private usersRepository: IUsersRepository,
-
-    @inject('HashProvider')
-    private hashProvider: IHashProvider,
   ) {}
 
   public async execute(request: Request): Promise<Omit<User, 'password'>> {
@@ -30,11 +26,10 @@ class CreateUserService {
       throw new AppError('E-mail address already used.');
     }
 
-    const hashedPassword = await this.hashProvider.generate(password);
     const user = (await this.usersRepository.create({
       name,
       email,
-      password: hashedPassword,
+      password,
     })) as PartialBy<User, 'password'>;
 
     delete user.password;
