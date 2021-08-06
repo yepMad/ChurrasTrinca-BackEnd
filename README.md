@@ -9,6 +9,7 @@ Olá, caro ~~trincker, trincar, trinquer~~!
 	 - Migrations;
 	 - Variáveis ambiente;
  - Como executar o projeto;
+ - Arquivo de rotas do Insomnia
 
 **Node:** v14.17.1
 **Yarn:** v1.22.10
@@ -38,3 +39,6 @@ De acordo com os arquivos .example, preencha corretamente **.env** e **.ormconfi
 Agora, é mais fácil do que comer o churras. Dentro da pasta do projeto, execute:
 
     yarn dev:server
+
+## Arquivo de rotas do Insomnia
+Utilizei o Insomnia para consultar as rotas a medida que fui criando-as, sendo assim, há o arquivo insomnia.json para caso deseje importar no software e ter acesso direto a todas as rotas.
