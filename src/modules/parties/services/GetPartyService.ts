@@ -70,6 +70,9 @@ class GetPartyService {
       where: {
         party_id,
       },
+      order: {
+        created_at: 'ASC',
+      },
       relations: ['user'],
     });
 
