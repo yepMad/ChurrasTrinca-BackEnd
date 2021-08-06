@@ -1,7 +1,7 @@
 import {
   getRepository,
   Repository,
-  FindConditions,
+  FindOneOptions,
   FindManyOptions,
 } from 'typeorm';
 
@@ -26,7 +26,7 @@ class PartiesRepository implements IPartiesUsersRepository {
   }
 
   public async read(
-    data: FindConditions<PartyUser>,
+    data: FindOneOptions<PartyUser>,
   ): Promise<PartyUser | undefined> {
     const party = await this.ormRepository.findOne(data);
 

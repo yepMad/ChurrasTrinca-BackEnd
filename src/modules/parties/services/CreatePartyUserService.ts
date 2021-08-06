@@ -59,8 +59,7 @@ class CreatePartyUserService {
     }
 
     const hasAddedPartyUser = await this.partiesUsersRepository.read({
-      user_id: invitedUser.id,
-      party_id,
+      where: { user_id: invitedUser.id, party_id },
     });
     if (hasAddedPartyUser) {
       throw new AppError(`This user is already added.`, 400);

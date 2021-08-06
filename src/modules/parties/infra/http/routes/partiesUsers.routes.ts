@@ -6,5 +6,6 @@ const partiesUsersRouter = Router();
 const partiesUsersController = new PartiesUsersController();
 
 partiesUsersRouter.post('/', partiesUsersController.create);
+partiesUsersRouter.put('/:id', partiesUsersController.update);
 
 export default partiesUsersRouter;
