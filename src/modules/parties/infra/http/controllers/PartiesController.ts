@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
+import GetPartyService from '@modules/parties/services/GetPartyService';
 import CreatePartyService from '@modules/parties/services/CreatePartyService';
 import GetUserPartiesService from '@modules/parties/services/GetUserPartiesService';
 
@@ -15,6 +16,18 @@ export default class PartiesController {
       description,
       observation,
       owner_id: request.user.id,
+    });
+
+    return response.status(200).json(party);
+  }
+
+  public async read(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const getParty = container.resolve(GetPartyService);
+    const party = await getParty.execute({
+      party_id: id,
+      user_id: request.user.id,
     });
 
     return response.status(200).json(party);

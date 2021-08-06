@@ -12,6 +12,7 @@ partiesRouter.use(ensureAuthenticated);
 
 partiesRouter.post('/', partiesController.create);
 partiesRouter.get('/', partiesController.list);
+partiesRouter.get('/:id', partiesController.read);
 
 partiesRouter.use('/users', PartiesUsers);
 
