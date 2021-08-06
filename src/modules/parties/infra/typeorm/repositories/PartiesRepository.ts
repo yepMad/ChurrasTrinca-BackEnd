@@ -27,7 +27,12 @@ class PartiesRepository implements IPartiesRepository {
   }
 
   public async readMany(ids: string[]): Promise<Party[] | undefined> {
-    const party = await this.ormRepository.findByIds(ids);
+    const party = await this.ormRepository.findByIds(ids, {
+      order: {
+        date: 'ASC',
+        created_at: 'ASC',
+      },
+    });
 
     return party;
   }
