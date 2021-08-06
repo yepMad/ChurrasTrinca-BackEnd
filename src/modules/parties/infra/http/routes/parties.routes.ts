@@ -11,6 +11,7 @@ const partiesController = new PartiesController();
 partiesRouter.use(ensureAuthenticated);
 
 partiesRouter.post('/', partiesController.create);
+partiesRouter.get('/', partiesController.list);
 
 partiesRouter.use('/users', PartiesUsers);
 

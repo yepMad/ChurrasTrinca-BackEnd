@@ -6,5 +6,6 @@ import ICreatePartyDTO from '@modules/parties/dtos/ICreatePartyDTO';
 export default interface IPartiesRepository {
   create(data: ICreatePartyDTO): Promise<Party>;
   read(data: FindConditions<Party>): Promise<Party | undefined>;
+  readMany(ids: string[]): Promise<Party[] | undefined>;
   update(data: Party): Promise<Party>;
 }

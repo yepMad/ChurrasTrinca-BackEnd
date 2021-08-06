@@ -1,4 +1,9 @@
-import { getRepository, Repository, FindConditions } from 'typeorm';
+import {
+  getRepository,
+  Repository,
+  FindConditions,
+  FindManyOptions,
+} from 'typeorm';
 
 import IPartiesUsersRepository from '@modules/parties/repositories/IPartiesUsersRepository';
 import ICreatePartyUserDTO from '@modules/parties/dtos/ICreatePartyUserDTO';
@@ -24,6 +29,14 @@ class PartiesRepository implements IPartiesUsersRepository {
     data: FindConditions<PartyUser>,
   ): Promise<PartyUser | undefined> {
     const party = await this.ormRepository.findOne(data);
+
+    return party;
+  }
+
+  public async readMany(
+    data: FindManyOptions<PartyUser>,
+  ): Promise<PartyUser[] | undefined> {
+    const party = await this.ormRepository.find(data);
 
     return party;
   }

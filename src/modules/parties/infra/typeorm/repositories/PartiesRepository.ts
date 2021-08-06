@@ -26,6 +26,12 @@ class PartiesRepository implements IPartiesRepository {
     return party;
   }
 
+  public async readMany(ids: string[]): Promise<Party[] | undefined> {
+    const party = await this.ormRepository.findByIds(ids);
+
+    return party;
+  }
+
   public async update(party: Party): Promise<Party> {
     const response = await this.ormRepository.save(party);
 
