@@ -62,16 +62,20 @@ class GetUserPartiesService {
         },
       });
 
-      const usersTotalValues =
-        partyUsers?.map(i => i.general_value + i.drinks_value) || [];
+      if (!partyUsers) {
+        throw new AppError(`You don't have permission to access this!`, 403);
+      }
 
-      const count_users = partyUsers ? partyUsers.length : 0;
-      const total_value = usersTotalValues.reduce((a, b) => a + b, 0);
+      const total_value = partyUsers.reduce(
+        (sum, { general_value, drinks_value }) =>
+          sum + (general_value + drinks_value),
+        0,
+      );
 
       return {
         id: item.id,
         title: item.name,
-        count_users,
+        count_users: partyUsers.length,
         date_timestamp: item.date.getTime(),
         total_value,
       } as PartyInfo;
