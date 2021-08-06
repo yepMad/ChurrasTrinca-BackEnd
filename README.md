@@ -4,7 +4,7 @@ Olá, caro ~~trincker, trincar, trinquer~~!
 
 **Aqui você pode encontrar:**
  - Como inicializar o projeto;
-   - Yarn;
+	 - Yarn;
 	 - Docker;
 	 - Migrations;
 	 - Variáveis ambiente;
